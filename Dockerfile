@@ -5,7 +5,7 @@ USER root
 ARG release=latest
 
 # Install required packages
-RUN apt-get update
+RUN apt-get update && apt install libusb-1.0-0
 
 # Install CDT & EOS from deb package
 ADD install_deb.sh /
