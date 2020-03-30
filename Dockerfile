@@ -13,6 +13,6 @@ RUN chmod +rx install_deb.sh && ./install_deb.sh $release && rm -f install_deb.s
 
 # build system contracts
 ADD build_contracts.sh /
-RUN chmod +rx build_contracts.sh && ./build_contracts.sh && rm -f build_contracts.sh
+RUN chmod +rx build_contracts.sh
 
 ENTRYPOINT service ssh restart && bash
