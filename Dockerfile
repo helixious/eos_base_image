@@ -9,10 +9,10 @@ RUN apt-get update
 
 # Install CDT & EOS from deb package
 ADD install_deb.sh /
-RUN ./install_deb.sh $release && rm -f install_deb.sh
+RUN chmod +rx install_deb.sh && ./install_deb.sh $release && rm -f install_deb.sh
 
 # build system contracts
 ADD build_contracts.sh /
-RUN ./build_contracts.sh && rm -f build_contracts.sh
+RUN chmod +rx build_contracts.sh && ./build_contracts.sh && rm -f build_contracts.sh
 
 ENTRYPOINT service ssh restart && bash
