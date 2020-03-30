@@ -1,14 +1,8 @@
 FROM helixious86/nodejs_base_image:latest
 RUN sudo apt-get update
-RUN #/bin/bash \
-if [ ! -d $HOME/eosio-wallet ]; then \
-    mkdir -p $HOME/eosio-wallet; \
-fi \
+RUN echo "[repo]" \
 if [ ! -d /contracts ]; then \
     mkdir -p /contracts; \
-fi \
-if [ ! -d $HOME/netbios ]; then \
-    mkdir -p $HOME/netbios; \
 fi \
 cd / \
 wget https://github.com/eosio/eosio.cdt/releases/download/v1.6.3/eosio.cdt_1.6.3-1-ubuntu-18.04_amd64.deb \
