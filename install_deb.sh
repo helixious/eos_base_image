@@ -20,8 +20,8 @@ elif [ "$2" = "latest" ]; then
 	eos=$(curl -s https://api.github.com/repos/EOSIO/eos/releases/latest | grep "browser_download_url.*18.04" | cut -d '"' -f 4)
     eos_filename=$(/usr/bin/curl -s https://api.github.com/repos/EOSIO/eos/releases/latest | grep "name.*18.04" | cut -d '"' -f 4)
 else 
-    eos=$(curl -s https://api.github.com/repos/EOSIO/eos/releases/$2 | grep "browser_download_url.*18.04" | cut -d '"' -f 4)
-    eos_filename=$(/usr/bin/curl -s https://api.github.com/repos/EOSIO/eos/releases/$2 | grep "name.*18.04" | cut -d '"' -f 4)
+    eos=$(curl -s https://api.github.com/repos/EOSIO/eos/releases/tags/$2 | grep "browser_download_url.*18.04" | cut -d '"' -f 4)
+    eos_filename=$(/usr/bin/curl -s https://api.github.com/repos/EOSIO/eos/releases/tags/$2 | grep "name.*18.04" | cut -d '"' -f 4)
 fi
 
 if [ "$cdt" = "" ]; then
