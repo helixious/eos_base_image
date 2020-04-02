@@ -3,7 +3,7 @@ USER root
 
 # Arguments that may be overridden by the user
 ARG cdt_release=v1.6.3
-ARG eos_release=v1.8.13
+ARG eos_release=latest
 
 # Install required packages
 RUN apt-get update && apt install libusb-1.0-0
