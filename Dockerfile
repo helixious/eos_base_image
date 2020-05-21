@@ -16,4 +16,4 @@ RUN chmod +rx install_deb.sh && ./install_deb.sh $cdt_release $eos_release && rm
 ADD build_contracts.sh /
 RUN chmod +rx build_contracts.sh
 
-ENTRYPOINT service ssh restart && bash
+# ENTRYPOINT service ssh restart && bash
