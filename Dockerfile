@@ -1,4 +1,4 @@
-FROM helixious86/nodejs_base_image:latest
+FROM helixious86/ubuntu_base_image:latest
 USER root
 
 # Arguments that may be overridden by the user
