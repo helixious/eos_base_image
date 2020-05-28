@@ -36,3 +36,13 @@ fi
 
 /usr/bin/wget $eos && /usr/bin/dpkg -i "$eos_filename" && rm -f "$eos_filename"
 /usr/bin/wget $cdt && /usr/bin/dpkg -i "$cdt_filename" && rm -f "$cdt_filename"
+
+cd /
+git clone https://github.com/EOSIO/eosio.contracts.git
+cd ./eosio.contracts/
+rm -rf build
+./build.sh -y
+
+mkdir /contracts
+cp /eosio.contracts/build/contracts/. /contracts/eosio -a
+rm -rf /eosio.contracts
