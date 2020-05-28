@@ -40,9 +40,9 @@ fi
 cd /
 git clone https://github.com/EOSIO/eosio.contracts.git
 cd ./eosio.contracts/
-rm -rf build
 ./build.sh -y
 
 mkdir /contracts
+mkdir /contracts/eosio
 cp /eosio.contracts/build/contracts/. /contracts/eosio -a
 rm -rf /eosio.contracts

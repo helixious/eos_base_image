@@ -2,7 +2,7 @@ FROM helixious86/ubuntu_base_image:latest
 USER root
 
 # Arguments that may be overridden by the user
-ARG cdt_release=v1.6.3
+ARG cdt_release=latest
 ARG eos_release=latest
 
 # Install required packages
