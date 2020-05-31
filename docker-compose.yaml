@@ -1,0 +1,42 @@
+version: '3.8'
+# enviroment variables in .env file
+# EOSIO_VERSION v2.0.5
+# EOSIO_CDT_VERSION v1.0
+# SMART_CONTRACT_NAME tasks2
+# PROJECT_PATH .
+networks:
+    backend:
+        driver: overlay
+services:
+    cdt:
+        image: centos:centos7
+        ports:
+        - target: 8888
+          published: 8888
+          mode: ingress
+        - target: 5555
+          published: 5555
+          mode: ingress
+        volumes:
+            - .:/contracts:rw
+        environment: 
+          - cdt=v1.6.3
+          - eos=latest
+          - contract=release/1.8.x
+        deploy:
+            replicas: 1
+            restart_policy:
+                condition: on-failure
+        working_dir: /contracts
+        tty: true
+        restart: on-failure:10
+        networks:
+            - backend
+        # command: bash -c "yum install -y epel-release && yum update -y && yum install -y cmake3 git wget aptitude curl gcc gcc-c++ apt-utils && ln -s /usr/bin/cmake3 /usr/bin/cmake && ./install_deb.sh $$cdt $$eos $$contract"
+        # command: " "
+        # command: bash -c "touch /config/config.txt"
+        # command: touch /config/config.txt && bash
+        # command: ["touch config.txt","grep -qxF $HOSTNAME config.txt || echo $HOSTNAME >> config.txt", "nodeos -e -p eosio --plugin eosio::http_plugin --plugin eosio::chain_plugin --plugin eosio::chain_api_plugin --plugin eosio::producer_plugin --plugin eosio::history_plugin --plugin eosio::history_api_plugin --data-dir /data --config-dir /config --http-server-address=0.0.0.0:8888 --access-control-allow-origin=* --http-validate-host=false --max-transaction-time=1000 --disable-replay-opts --contracts-console  --filter-on=* --filter-out=eosio:onblock:"]
+
+
+# yum install -y epel-release && yum update -y && yum install -y cmake3 git wget aptitude curl gcc gcc-c++ apt-utils && ln -s /usr/bin/cmake3 /usr/bin/cmake && ./install_deb.sh $$cdt $$eos $$contract
