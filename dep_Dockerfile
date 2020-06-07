@@ -18,9 +18,9 @@ RUN yum install -y make \
 ADD cmake-3.10.3-Linux-x86_64 /cmake
 ADD install_deb.sh /
 # Arguments that may be overridden by the user
-ARG cdt_release=v1.6.3
-ARG eos_release=latest
-ARG contract_release=release/1.8.x
+# ARG cdt_release=v1.6.3
+# ARG eos_release=latest
+# ARG contract_release=release/1.8.x
 
 # RUN apt upgrade -y
 # Install required packages
@@ -28,7 +28,6 @@ ARG contract_release=release/1.8.x
 
 # Install CDT & EOS from deb package and install build system contracts
 # ADD cmake-3.10.3-Linux-x86_64 /cmake
-RUN mkdir /contracts
 RUN ln -s /cmake/bin/cmake /usr/bin/cmake
 RUN yum clean all
 RUN chmod +x install_deb.sh && ./install_deb.sh $cdt_release $eos_release $contract_release && rm -f install_deb.sh
